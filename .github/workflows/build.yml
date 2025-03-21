@@ -27,4 +27,7 @@ jobs:
         run: ./gradlew runOnGitHub
 
       # Send JaCoCo reports to codecov
-      - run: bash <(curl -s https://codecov.io/bash)
+      - name: Send JaCoCo reports to Codecov
+        run: |
+          Invoke-WebRequest -Uri "https://codecov.io/bash" -OutFile "codecov.sh"
+          bash codecov.sh
