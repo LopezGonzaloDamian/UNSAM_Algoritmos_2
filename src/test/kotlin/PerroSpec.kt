@@ -5,10 +5,14 @@ import io.kotest.matchers.shouldBe
 class PerroSpec : DescribeSpec( {
 
     describe("Testeo del perro"){
-        it("ladrido"){
-            val perro = Perro()
-            perro.ladrar() shouldBe "Guau"
+        it("ladrido del perro grande "){
+            val perroGrande = Perro()
+            perroGrande.ladrar() shouldBe "Guau"
+        }
+
+        it("ladrido del perro chico"){
+            val perroChico = Perro(grande = false)
+            perroChico.ladrar() shouldBe "wuff"
         }
     }
-
 })

@@ -1,5 +1,5 @@
 package org.example
 
-class Perro {
-    fun ladrar()= "Guau"
+class Perro (var grande: Boolean = true) {
+    fun ladrar()= if (grande) "Guau" else "wuff"
 }
