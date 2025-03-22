@@ -2,6 +2,7 @@ import io.kotest.core.spec.style.DescribeSpec
 import org.example.Perro
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
+import org.example.perrito1
 
 class PerroSpec : DescribeSpec( {
 
@@ -13,6 +14,13 @@ class PerroSpec : DescribeSpec( {
 
             perroPratto.comer(50)
             perroPratto.energia shouldBe 260
+
+            perrito1.comer(5)
+            perrito1.energia shouldBe 110
+
+            perrito1.caminar(10)
+            perrito1.energia shouldBe 90
+
         }
 
 
