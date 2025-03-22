@@ -1,33 +1,33 @@
-# .github/workflows/build.yml
-# GitHub Actions documentation
-# => https://docs.github.com/en/actions
-name: build
+  # .github/workflows/build.yml
+  # GitHub Actions documentation
+  # => https://docs.github.com/en/actions
+  name: build
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
-on: [push, pull_request]
-jobs:
-  gradle:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin' # See 'Supported distributions' for available options
-          java-version: '21'
+  # Controls when the action will run. Triggers the workflow on push or pull request
+  # events but only for the master branch
+  on: [push, pull_request]
+  jobs:
+    gradle:
+      runs-on: windows-latest
+      steps:
+        - uses: actions/checkout@v4
+        - uses: actions/setup-java@v4
+          with:
+            distribution: 'temurin' # See 'Supported distributions' for available options
+            java-version: '21'
 
-      - run: |
-          chmod +x ./gradlew
+        - run: |
+            chmod +x ./gradlew
 
-      # Execute Gradle commands in GitHub Actions workflows
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
+        # Execute Gradle commands in GitHub Actions workflows
+        - name: Setup Gradle
+          uses: gradle/actions/setup-gradle@v4
 
-      - name: Run test with coverage
-        run: ./gradlew runOnGitHub
+        - name: Run test with coverage
+          run: ./gradlew runOnGitHub
 
-      # Send JaCoCo reports to codecov
-      - name: Send JaCoCo reports to Codecov
-        run: |
-          Invoke-WebRequest -Uri "https://codecov.io/bash" -OutFile "codecov.sh"
-          bash codecov.sh
+        # Send JaCoCo reports to codecov
+        - name: Send JaCoCo reports to Codecov
+          run: |
+            Invoke-WebRequest -Uri "https://codecov.io/bash" -OutFile "codecov.sh"
+            bash codecov.sh
