@@ -1,5 +1,8 @@
-package org.example
+package ar.edu.algo2
 
-fun main() {
-    println("Hello World!")
+object Plataforma {
+
+    val deliveries= mutableSetOf<Delivery>()
+    val deliveriesLibres= mutableSetOf<Delivery>()
+    val locales = mutableSetOf<Local>()
 }
